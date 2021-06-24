@@ -15,8 +15,11 @@ const server = app.listen(PORT, () => {
 });
 
 const SocketIO = require('socket.io');
-const io = SocketIO(server)
-io.origins()
+const io = SocketIO(server, {
+    cors: {
+        origin: '*:*'
+    }
+})
 
 io.on('connection', socket => {
     socket.broadcast.emit('new-conection', {
