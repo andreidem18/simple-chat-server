@@ -16,6 +16,7 @@ const server = app.listen(PORT, () => {
 
 const SocketIO = require('socket.io');
 const io = SocketIO(server)
+io.origins()
 
 io.on('connection', socket => {
     socket.broadcast.emit('new-conection', {
